@@ -19,9 +19,23 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      # 生成静态文件
-      - name: Build
-        run: npm install && hexo generate
+      - name: setup nodejs...
+        uses: actions/setup-node@v1
+      - name: install hexo...
+        run: |
+          npm install hexo-cli -g
+          npm i -S hexo-prism-plugin -g
+          npm install hexo-generator-search --save -g
+          npm i hexo-permalink-pinyin  -g
+          npm i --save hexo-wordcount -g
+          npm install hexo-filter-github-emojis  -g
+          npm install hexo-generator-feed  -g
+          npm install
+
+      - name: 4. hexo generate public files...
+        run: |
+          hexo clean
+          hexo g
 
       # 部署到 GitHub Pages
       - name: Deploy
