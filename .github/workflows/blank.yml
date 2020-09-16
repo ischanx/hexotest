@@ -30,6 +30,7 @@ jobs:
           npm i --save hexo-wordcount -g
           npm install hexo-filter-github-emojis  -g
           npm install hexo-generator-feed  -g
+          npm i hexo-theme-butterfly -g
           npm install
 
       - name: 4. hexo generate public files...
